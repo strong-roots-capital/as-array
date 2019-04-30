@@ -1,6 +1,6 @@
 {
   "name": "@strong-roots-capital/as-array",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "description": "Promote non-array values to an array",
   "main": "dist/src/as-array.js",
   "types": "dist/src/as-array.d.ts",
