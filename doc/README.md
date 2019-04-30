@@ -4,6 +4,11 @@ as-array [![Build status](https://travis-ci.org/strong-roots-capital/as-array.sv
 
 > Promote non-array values to an array
 
+*   dead-simple
+*   strongly-typed
+*   promotes objects as expected
+*   no dependencies
+
 Install
 -------
 
@@ -16,18 +21,37 @@ Use
 
 ```typescript
 import asArray from '@strong-roots-capital/as-array'
-// TODO: describe usage
+
+console.log(asArray(null))
+//=>[]
+
+console.log(asArray(undefined))
+//=>[]
+
+console.log(asArray([]))
+//=>[]
+
+console.log(asArray('horse'))
+//=>[ 'horse' ]
+
+console.log(asArray(1))
+//=>[ 1 ]
+
+console.log(asArray([1, 2, 3]))
+//=>[ 1, 2, 3 ]
+
+console.log(asArray({foo: 'bar'}))
+//=>[ { foo: 'bar' } ]
+
+console.log(asArray([{foo: 'bar'}, {loo: 'fah'}]))
+//=>[ { foo: 'bar' }, { loo: 'fah' } ]
 ```
 
 Related
 -------
 
-TODO
-
-Acknowledgments
----------------
-
-TODO
+*   [make-array](https://github.com/kaelzhang/make-array)
+*   [as-array](https://github.com/scottcorgan/as-array)
 
 ## Index
 
@@ -43,22 +67,27 @@ TODO
 
 ###  asArray
 
-▸ **asArray**<`T`>(value: *`T`*): `T`[]
+▸ **asArray**<`T`>(value: *`T` \| `T`[]*): `T`[]
 
-*Defined in [as-array.ts:10](https://github.com/strong-roots-capital/as-array/blob/d5e5d34/src/as-array.ts#L10)*
+*Defined in [as-array.ts:19](https://github.com/strong-roots-capital/as-array/blob/68205e7/src/as-array.ts#L19)*
 
-TODO: document
+Promote `value` to an array, if not already.
+
+*__remarks__*: *   will not modify arrays
+*   promotes `null` to \[\]
+*   promotes `undefined` to \[\]
 
 **Type parameters:**
 
 #### T 
 **Parameters:**
 
-| Name | Type |
-| ------ | ------ |
-| value | `T` |
+| Name | Type | Description |
+| ------ | ------ | ------ |
+| value | `T` \| `T`[] |  Value to wrap in an array if necessary |
 
 **Returns:** `T`[]
+Value wrapped in an array
 
 ___
 
